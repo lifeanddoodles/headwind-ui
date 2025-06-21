@@ -1,3 +1,58 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-primary: hsl(243, 75%, 59%);
+  --color-secondary: hsl(218, 75%, 59%);
+  --color-accent: hsl(19, 80%, 48%);
+
+  /* Neutral Colors */
+  --color-white: hsl(0, 0%, 98%);
+  --color-neutral-lightest: hsl(0, 0%, 95%);
+  --color-neutral-lighter: hsl(0, 0%, 85%);
+  --color-neutral-light: hsl(0, 0%, 75%);
+  --color-neutral: hsl(0, 0%, 50%);
+  --color-neutral-dark: hsl(0, 0%, 25%);
+  --color-neutral-darker: hsl(0, 0%, 15%);
+  --color-neutral-darkest: hsl(0, 0%, 5%);
+  --color-black: hsl(0, 0%, 2%);
+
+  /* Utility Colors */
+  --color-success: hsl(120, 100%, 50%);
+  --color-info: hsl(204, 100%, 50%);
+  --color-warning: hsl(40, 100%, 50%);
+  --color-danger: hsl(0, 100%, 50%);
+
+  --color-background: var(--color-white);
+  --color-text: var(--color-black);
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+  /* Font Sizes */
+  /* Font Weights */
+
+  /* Forms */
+  /* Inputs */
+  /* Buttons */
+
+  /* Utilities */
+  /* Spacing */
+  /* Layout */
+  /* Shadows */
+  /* Container */
+  --radius-md: 0.375rem;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  [data-theme="dark"] {
+    --color-background: var(--color-black);
+    --color-text: var(--color-white);
+  }
+}

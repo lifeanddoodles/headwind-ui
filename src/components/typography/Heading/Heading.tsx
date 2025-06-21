@@ -8,5 +8,5 @@ export const Heading = ({
   level?: 1 | 2 | 3 | 4 | 5 | 6;
 }) => {
   const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements;
-  return <Tag>{children}</Tag>;
+  return <Tag className="text-primary">{children}</Tag>;
 };
