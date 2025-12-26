@@ -1,32 +1,21 @@
 import { cva } from "class-variance-authority";
-import { JSX, ReactNode } from "react";
+import { JSX } from "react";
 import {
-  CommonTextVariants,
+  headingLevelDefaults,
+  HeadingProps,
+  headingSizes,
   mergeClasses,
-  textSizes,
   textTones,
   textWeights,
 } from "../utils";
 
-const headingLevels = [1, 2, 3, 4, 5, 6] as const;
-
-type HeadingLevel = (typeof headingLevels)[number];
-
-type HeadingProps = {
-  children: ReactNode;
-  level?: HeadingLevel;
-  className?: string;
-} & CommonTextVariants;
-
 const headingClasses = cva("font-sans", {
   variants: {
-    size: textSizes,
+    size: headingSizes,
     weight: textWeights,
     tone: textTones,
   },
   defaultVariants: {
-    size: "3xl",
-    weight: "bold",
     tone: "primary",
   },
 });
@@ -40,10 +29,17 @@ export const Heading = ({
   tone,
 }: HeadingProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const { weight: defaultWeight, size: defaultSize } =
+    headingLevelDefaults[level || 2];
+
   return (
     <Tag
       className={mergeClasses(
-        headingClasses({ size, weight, tone }),
+        headingClasses({
+          size: size ?? defaultSize,
+          weight: weight ?? defaultWeight,
+          tone,
+        }),
         className
       )}
     >
@@ -53,37 +49,37 @@ export const Heading = ({
 };
 
 export const H1 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={1} size="4xl" {...props}>
+  <Heading level={1} {...props}>
     {children}
   </Heading>
 );
 
 export const H2 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={2} size="3xl" {...props}>
+  <Heading level={2} {...props}>
     {children}
   </Heading>
 );
 
 export const H3 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={3} size="2xl" {...props}>
+  <Heading level={3} {...props}>
     {children}
   </Heading>
 );
 
 export const H4 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={4} size="xl" {...props}>
+  <Heading level={4} {...props}>
     {children}
   </Heading>
 );
 
 export const H5 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={5} size="lg" {...props}>
+  <Heading level={5} {...props}>
     {children}
   </Heading>
 );
 
 export const H6 = ({ children, ...props }: Omit<HeadingProps, "level">) => (
-  <Heading level={6} size="base" {...props}>
+  <Heading level={6} {...props}>
     {children}
   </Heading>
 );

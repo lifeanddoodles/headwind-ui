@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { sizeOptions, toneOptions, weightOptions } from "../utils";
-import { Text, textTags } from "./Text";
+import { sizeOptions, textTags, toneOptions, weightOptions } from "../utils";
+import { Text } from "./Text";
 
 const meta: Meta<typeof Text> = {
   title: "Components/Text",
@@ -33,7 +33,7 @@ const meta: Meta<typeof Text> = {
   },
   args: {
     children: "Default text tag (p)",
-    size: "base",
+    size: "body",
     weight: "normal",
     tone: "default",
     as: "p",

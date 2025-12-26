@@ -24,8 +24,6 @@ const H1Meta: Meta<typeof H1> = {
   },
   args: {
     children: "This is an H1",
-    size: "4xl",
-    weight: "bold",
     tone: "primary",
   },
 };

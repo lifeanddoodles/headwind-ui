@@ -1,8 +1,4 @@
-/* @import "./tokens.css"; */
-
-@import "tailwindcss";
-
-@theme {
+:root {
   /* Neutral Colors */
   --color-white: hsl(0, 0%, 98%);
   --color-neutral-lightest: hsl(0, 0%, 95%);
@@ -72,26 +68,15 @@
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
 
-  --text-smallest--font-weight: var(--font-weight-semibold);
-  --text-small--font-weight: var(--font-weight-medium);
   --text-body--font-weight: var(--font-weight-normal);
   --text-subheading--font-weight: var(--font-weight-semibold);
   --text-heading--font-weight: var(--font-weight-medium);
   --text-heading-large--font-weight: var(--font-weight-normal);
 
   /* Line height */
-  --line-height-looser: 2em;
-  --line-height-loose: 1.75em;
-  --line-height-normal: 1.6em;
-  --line-height-tight: 1.25em;
-  --line-height-tighter: 1em;
-
-  --text-smallest--line-height: var(--line-height-loose);
-  --text-small--line-height: var(--line-height-normal);
-  --text-body--line-height: var(--line-height-normal);
-  --text-subheading--line-height: var(--line-height-tight);
-  --text-heading--line-height: var(--line-height-tighter);
-  --text-heading-large--line-height: var(--line-height-tighter);
+  --text-body--line-height: 1.6em;
+  --text-large--line-height: 1.25em;
+  --text-extra-large--line-height: 1em;
 
   /* Letter spacing */
   --letter-spacing-tight: -0.015em;
@@ -108,18 +93,6 @@
   /* Shadows */
   /* Container */
   --radius-md: 0.375rem;
-}
-
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-family-body);
-    font-size: var(--text-body);
-    font-weight: var(--text-body--font-weight);
-    line-height: var(--text-body--line-height);
-    letter-spacing: var(--letter-spacing-normal);
-  }
 
   [data-theme="dark"] {
     --color-background: var(--color-black);

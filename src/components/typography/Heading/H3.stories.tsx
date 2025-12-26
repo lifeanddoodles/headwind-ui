@@ -24,8 +24,6 @@ const H3Meta: Meta<typeof H3> = {
   },
   args: {
     children: "This is an H3",
-    size: "2xl",
-    weight: "bold",
     tone: "primary",
   },
 };

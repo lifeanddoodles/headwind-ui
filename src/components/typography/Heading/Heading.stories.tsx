@@ -9,16 +9,19 @@ const meta: Meta<typeof Heading> = {
     level: {
       control: { type: "number", min: 1, max: 6 },
       description: "HTML heading level (h1 - h6)",
+      defaultValue: 2,
     },
     size: {
       control: { type: "select" },
       options: sizeOptions,
       description: "Text size",
+      defaultValue: "heading",
     },
     weight: {
       control: { type: "select" },
       options: weightOptions,
       description: "Font weight",
+      defaultValue: "semibold",
     },
     tone: {
       control: { type: "select" },
@@ -33,9 +36,8 @@ const meta: Meta<typeof Heading> = {
   args: {
     children: "Heading Example",
     level: 2,
-    size: "2xl",
-    weight: "bold",
-    tone: "primary",
+    size: "heading",
+    weight: "semibold",
   },
   tags: ["autodocs"],
 };

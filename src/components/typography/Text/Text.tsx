@@ -1,35 +1,11 @@
 import { cva } from "class-variance-authority";
-import { ReactNode } from "react";
 import {
-  CommonTextVariants,
+  TextProps,
   mergeClasses,
   textSizes,
   textTones,
   textWeights,
 } from "../utils";
-
-export const textTags = [
-  "p",
-  "span",
-  "b",
-  "strong",
-  "i",
-  "em",
-  "mark",
-  "small",
-  "del",
-  "ins",
-  "sub",
-  "sup",
-] as const;
-
-type TextTag = (typeof textTags)[number];
-
-type TextProps = {
-  children: ReactNode;
-  as?: TextTag;
-  className?: string;
-} & CommonTextVariants;
 
 const textClasses = cva("font-sans", {
   variants: {
@@ -38,7 +14,7 @@ const textClasses = cva("font-sans", {
     tone: textTones,
   },
   defaultVariants: {
-    size: "base",
+    size: "body",
     weight: "normal",
     tone: "default",
   },
@@ -48,7 +24,7 @@ export const Text = ({
   children,
   as = "p",
   className,
-  size,
+  size = "body",
   weight,
   tone,
 }: TextProps) => {
