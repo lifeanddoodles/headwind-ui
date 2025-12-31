@@ -3,12 +3,31 @@ import { mergeClasses } from "../../../utils";
 import {
   BaseContainer,
   BaseContainerProps,
+  baseContainerClasses,
 } from "../BaseContainer/BaseContainer";
 
 export type ResponsiveContainerProps = {
-  justifyContent?: "start" | "center" | "end";
-  alignItems?: "start" | "center" | "end";
-  alignContent?: "start" | "center" | "end";
+  justifyContent?:
+    | "start"
+    | "center"
+    | "end"
+    | "between"
+    | "around"
+    | "evenly"
+    | "stretch"
+    | "baseline"
+    | "normal";
+  alignItems?: "start" | "center" | "end" | "baseline" | "stretch";
+  alignContent?:
+    | "start"
+    | "center"
+    | "end"
+    | "between"
+    | "around"
+    | "evenly"
+    | "stretch"
+    | "baseline"
+    | "normal";
 };
 
 export type spacingOption = "none" | "small" | "medium" | "large";
@@ -19,7 +38,7 @@ type BoxProps = {
   wrap?: "wrap" | "nowrap" | "reverse";
 };
 
-const baseContainerClasses = cva("flex", {
+const boxClasses = cva("flex", {
   variants: {
     spacing: {
       none: "gap-0",
@@ -45,6 +64,7 @@ const baseContainerClasses = cva("flex", {
       evenly: "justify-evenly",
       stretch: "justify-stretch",
       baseline: "justify-baseline",
+      normal: "justify-normal",
     },
     alignItems: {
       start: "items-start",
@@ -62,50 +82,13 @@ const baseContainerClasses = cva("flex", {
       evenly: "content-evenly",
       stretch: "content-stretch",
       baseline: "content-baseline",
-    },
-    bgColor: {
-      background: "bg-background color-text",
-      primary: "bg-primary",
-      secondary: "bg-secondary",
-      accent: "bg-accent",
-      success: "bg-success",
-      info: "bg-info",
-      warning: "bg-warning",
-      danger: "bg-danger",
-      muted: "bg-muted",
-    },
-    margin: {
-      none: "m-0",
-      small: "m-2",
-      medium: "m-4",
-      large: "m-8",
-    },
-    padding: {
-      none: "p-0",
-      small: "p-2",
-      medium: "p-4",
-      large: "p-8",
-    },
-    border: {
-      none: "border-0",
-      small: "border-2",
-      medium: "border-4",
-      large: "border-8",
-    },
-    radius: {
-      none: "rounded-none",
-      small: "rounded-sm",
-      medium: "rounded-md",
-      large: "rounded-lg",
-      full: "rounded-full",
+      normal: "content-normal",
     },
   },
   defaultVariants: {
-    bgColor: "background",
-    margin: "none",
-    padding: "none",
-    border: "none",
-    radius: "none",
+    spacing: "none",
+    direction: "vertical",
+    wrap: "wrap",
   },
 });
 
@@ -113,13 +96,13 @@ export const Box = ({
   children,
   spacing = "small",
   direction = "vertical",
-  wrap,
+  wrap = "wrap",
   justifyContent,
   alignItems,
   alignContent,
   as,
   className,
-  bgColor = "background",
+  bgColor = "transparent",
   margin = "none",
   padding = "none",
   border = "none",
@@ -129,18 +112,16 @@ export const Box = ({
     <BaseContainer
       as={as}
       className={mergeClasses(
-        baseContainerClasses({
+        baseContainerClasses({ bgColor, margin, padding, border, radius }),
+        boxClasses({
           spacing,
           direction,
           wrap,
-          justifyContent,
-          alignItems,
-          alignContent,
-          bgColor,
-          margin,
-          padding,
-          border,
-          radius,
+          justifyContent: justifyContent || "start",
+          alignItems:
+            alignItems || direction === "vertical" ? "start" : "stretch",
+          alignContent:
+            alignContent || direction === "vertical" ? "start" : "normal",
         }),
         className
       )}

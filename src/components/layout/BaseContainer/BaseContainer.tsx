@@ -12,6 +12,7 @@ export const baseContainerBgColors = [
   "warning",
   "danger",
   "muted",
+  "transparent",
 ];
 
 export const basePropSizes = ["none", "small", "medium", "large"];
@@ -25,11 +26,12 @@ export type backgroundOption =
   | "info"
   | "warning"
   | "danger"
-  | "muted";
+  | "muted"
+  | "transparent";
 export type marginOption = "none" | "small" | "medium" | "large";
 export type paddingOption = "none" | "small" | "medium" | "large";
 export type borderOption = "none" | "small" | "medium" | "large";
-export type radiusOption = "none" | "small" | "medium" | "large";
+export type radiusOption = "none" | "small" | "medium" | "large" | "full";
 
 export type BaseContainerProps = {
   children: ReactNode;
@@ -42,7 +44,7 @@ export type BaseContainerProps = {
   radius?: radiusOption;
 };
 
-const baseContainerClasses = cva("", {
+export const baseContainerClasses = cva("", {
   variants: {
     bgColor: {
       background: "bg-background color-text",
@@ -54,6 +56,7 @@ const baseContainerClasses = cva("", {
       warning: "bg-warning",
       danger: "bg-danger",
       muted: "bg-muted",
+      transparent: "bg-transparent color-text",
     },
     margin: {
       none: "m-0",

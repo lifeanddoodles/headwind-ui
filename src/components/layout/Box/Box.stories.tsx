@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  baseContainerBgColors,
-  basePropSizes,
-} from "../BaseContainer/BaseContainer";
+import { basePropSizes } from "../BaseContainer/BaseContainer";
 import { Box } from "./Box";
 
 const meta: Meta<typeof Box> = {
@@ -63,37 +60,13 @@ const meta: Meta<typeof Box> = {
       description: "Align Content",
       defaultValue: "start",
     },
-    bgColor: {
-      control: { type: "select" },
-      options: baseContainerBgColors,
-      description: "Background color",
-      defaultValue: "background",
-    },
-    margin: {
-      control: { type: "select" },
-      options: basePropSizes,
-      description: "Margin",
-      defaultValue: "none",
-    },
-    padding: {
-      control: { type: "select" },
-      options: basePropSizes,
-      description: "Padding",
-      defaultValue: "none",
-    },
-    border: {
-      control: { type: "select" },
-      options: basePropSizes,
-      description: "Border",
-      defaultValue: "none",
-    },
-    radius: {
-      control: { type: "select" },
-      options: basePropSizes,
-      description: "Radius",
-      defaultValue: "none",
-    },
     children: { table: { disable: true } },
+    as: { table: { disable: true } },
+    bgColor: { table: { disable: true } },
+    margin: { table: { disable: true } },
+    padding: { table: { disable: true } },
+    border: { table: { disable: true } },
+    radius: { table: { disable: true } },
   },
   args: {
     children: (
