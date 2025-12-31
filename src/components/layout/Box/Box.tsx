@@ -1,49 +1,68 @@
 import { cva } from "class-variance-authority";
-import { JSX, ReactNode } from "react";
 import { mergeClasses } from "../../../utils";
+import {
+  BaseContainer,
+  BaseContainerProps,
+} from "../BaseContainer/BaseContainer";
 
-export const boxBgColors = [
-  "background",
-  "primary",
-  "secondary",
-  "accent",
-  "success",
-  "info",
-  "warning",
-  "danger",
-  "muted",
-];
-
-export const basePropSizes = ["none", "small", "medium", "large"];
-
-export type backgroundOption =
-  | "background"
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger"
-  | "muted";
-export type marginOption = "none" | "small" | "medium" | "large";
-export type paddingOption = "none" | "small" | "medium" | "large";
-export type borderOption = "none" | "small" | "medium" | "large";
-export type radiusOption = "none" | "small" | "medium" | "large";
-
-type BoxProps = {
-  children: ReactNode;
-  as?: keyof JSX.IntrinsicElements;
-  className?: string;
-  bgColor?: backgroundOption;
-  margin?: marginOption;
-  padding?: paddingOption;
-  border?: borderOption;
-  radius?: radiusOption;
+export type ResponsiveContainerProps = {
+  justifyContent?: "start" | "center" | "end";
+  alignItems?: "start" | "center" | "end";
+  alignContent?: "start" | "center" | "end";
 };
 
-const boxClasses = cva("flex", {
+export type spacingOption = "none" | "small" | "medium" | "large";
+
+type BoxProps = {
+  spacing?: spacingOption;
+  direction?: "horizontal" | "vertical";
+  wrap?: "wrap" | "nowrap" | "reverse";
+};
+
+const baseContainerClasses = cva("flex", {
   variants: {
+    spacing: {
+      none: "gap-0",
+      small: "gap-2",
+      medium: "gap-4",
+      large: "gap-8",
+    },
+    direction: {
+      horizontal: "flex-row",
+      vertical: "flex-col",
+    },
+    wrap: {
+      wrap: "flex-wrap",
+      nowrap: "flex-nowrap",
+      reverse: "flex-wrap-reverse",
+    },
+    justifyContent: {
+      start: "justify-start",
+      center: "justify-center",
+      end: "justify-end",
+      between: "justify-between",
+      around: "justify-around",
+      evenly: "justify-evenly",
+      stretch: "justify-stretch",
+      baseline: "justify-baseline",
+    },
+    alignItems: {
+      start: "items-start",
+      center: "items-center",
+      end: "items-end",
+      baseline: "items-baseline",
+      stretch: "items-stretch",
+    },
+    alignContent: {
+      start: "content-start",
+      center: "content-center",
+      end: "content-end",
+      between: "content-between",
+      around: "content-around",
+      evenly: "content-evenly",
+      stretch: "content-stretch",
+      baseline: "content-baseline",
+    },
     bgColor: {
       background: "bg-background color-text",
       primary: "bg-primary",
@@ -92,23 +111,41 @@ const boxClasses = cva("flex", {
 
 export const Box = ({
   children,
-  as = "div",
+  spacing = "small",
+  direction = "vertical",
+  wrap,
+  justifyContent,
+  alignItems,
+  alignContent,
+  as,
   className,
   bgColor = "background",
   margin = "none",
   padding = "none",
   border = "none",
   radius = "none",
-}: BoxProps) => {
-  const ComponentTag = as;
+}: BoxProps & BaseContainerProps & ResponsiveContainerProps) => {
   return (
-    <ComponentTag
+    <BaseContainer
+      as={as}
       className={mergeClasses(
-        boxClasses({ bgColor, margin, padding, border, radius }),
+        baseContainerClasses({
+          spacing,
+          direction,
+          wrap,
+          justifyContent,
+          alignItems,
+          alignContent,
+          bgColor,
+          margin,
+          padding,
+          border,
+          radius,
+        }),
         className
       )}
     >
       {children}
-    </ComponentTag>
+    </BaseContainer>
   );
 };
