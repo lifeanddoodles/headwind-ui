@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { sizeOptions, toneOptions, weightOptions } from "../utils";
+import { sizeOptions, toneOptions, weightOptions } from "../../../utils";
 import { Heading } from "./Heading";
 
 const meta: Meta<typeof Heading> = {

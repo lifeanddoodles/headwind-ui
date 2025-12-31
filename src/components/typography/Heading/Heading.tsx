@@ -7,7 +7,7 @@ import {
   mergeClasses,
   textTones,
   textWeights,
-} from "../utils";
+} from "../../../utils";
 
 const headingClasses = cva("font-sans", {
   variants: {

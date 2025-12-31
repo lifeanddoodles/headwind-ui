@@ -5,7 +5,7 @@ import {
   textSizes,
   textTones,
   textWeights,
-} from "../utils";
+} from "../../../utils";
 
 const textClasses = cva("font-sans", {
   variants: {
