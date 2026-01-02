@@ -1,26 +1,42 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box } from "./Box";
+import { Grid } from "./Grid";
 
-const meta: Meta<typeof Box> = {
-  title: "Components/Box",
-  component: Box,
+const meta: Meta<typeof Grid> = {
+  title: "Components/Grid",
+  component: Grid,
   argTypes: {
+    columns: {
+      control: { type: "number" },
+      description: "Number of Columns",
+      defaultValue: 1,
+    },
+    rows: {
+      control: { type: "number" },
+      description: "Number of Rows",
+      defaultValue: 1,
+    },
+    autoFlow: {
+      control: { type: "select" },
+      options: ["row", "column", "row-dense", "column-dense"],
+      description: "Auto Flow",
+      defaultValue: "row",
+    },
+    autoCols: {
+      control: { type: "select" },
+      options: ["auto", "min", "max", "fr"],
+      description: "Auto Columns",
+      // defaultValue: "auto",
+    },
+    autoRows: {
+      control: { type: "select" },
+      options: ["auto", "min", "max", "fr"],
+      description: "Auto Rows",
+      // defaultValue: "auto",
+    },
     gap: {
       control: { type: "number" },
       description: "Gap",
       defaultValue: 0,
-    },
-    direction: {
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
-      description: "Direction",
-      defaultValue: "horizontal",
-    },
-    wrap: {
-      control: { type: "select" },
-      options: ["wrap", "nowrap", "reverse"],
-      description: "Wrap",
-      defaultValue: "wrap",
     },
     justifyContent: {
       control: { type: "select" },
@@ -67,13 +83,19 @@ const meta: Meta<typeof Box> = {
     radius: { table: { disable: true } },
   },
   args: {
+    columns: 3,
+    autoFlow: "row",
+    // autoCols: "auto",
+    // autoRows: "auto",
     children: (
       <>
-        <p>Short text</p>
-        <p>Text with a little greater length</p>
-        <p>
+        <p className="bg-gray-200">Short text</p>
+        <p className="bg-gray-300">Text with a little greater length</p>
+        <p className="bg-gray-400">
           Super long text prone to overflow inside containers and break layout
         </p>
+        <p className="bg-gray-500">Another Short text</p>
+        <p className="bg-gray-600">Fifth text</p>
       </>
     ),
   },
@@ -81,6 +103,6 @@ const meta: Meta<typeof Box> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Box>;
+type Story = StoryObj<typeof Grid>;
 
 export const Default: Story = {};

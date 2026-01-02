@@ -1,48 +1,6 @@
 import { cva } from "class-variance-authority";
-import { JSX, ReactNode } from "react";
 import { mergeClasses } from "../../../utils";
-
-export const baseContainerBgColors = [
-  "background",
-  "primary",
-  "secondary",
-  "accent",
-  "success",
-  "info",
-  "warning",
-  "danger",
-  "muted",
-  "transparent",
-];
-
-export const basePropSizes = ["none", "small", "medium", "large"];
-
-export type backgroundOption =
-  | "background"
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger"
-  | "muted"
-  | "transparent";
-export type marginOption = "none" | "small" | "medium" | "large";
-export type paddingOption = "none" | "small" | "medium" | "large";
-export type borderOption = "none" | "small" | "medium" | "large";
-export type radiusOption = "none" | "small" | "medium" | "large" | "full";
-
-export type BaseContainerProps = {
-  children: ReactNode;
-  as?: keyof JSX.IntrinsicElements;
-  className?: string;
-  bgColor?: backgroundOption;
-  margin?: marginOption;
-  padding?: paddingOption;
-  border?: borderOption;
-  radius?: radiusOption;
-};
+import { BaseContainerProps } from "../layoutUtils";
 
 export const baseContainerClasses = cva("", {
   variants: {

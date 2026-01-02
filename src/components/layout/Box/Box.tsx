@@ -2,49 +2,41 @@ import { cva } from "class-variance-authority";
 import { mergeClasses } from "../../../utils";
 import {
   BaseContainer,
-  BaseContainerProps,
   baseContainerClasses,
 } from "../BaseContainer/BaseContainer";
-
-export type ResponsiveContainerProps = {
-  justifyContent?:
-    | "start"
-    | "center"
-    | "end"
-    | "between"
-    | "around"
-    | "evenly"
-    | "stretch"
-    | "baseline"
-    | "normal";
-  alignItems?: "start" | "center" | "end" | "baseline" | "stretch";
-  alignContent?:
-    | "start"
-    | "center"
-    | "end"
-    | "between"
-    | "around"
-    | "evenly"
-    | "stretch"
-    | "baseline"
-    | "normal";
-};
-
-export type spacingOption = "none" | "small" | "medium" | "large";
+import {
+  BaseContainerProps,
+  gapOption,
+  ResponsiveContainerProps,
+} from "../layoutUtils";
 
 type BoxProps = {
-  spacing?: spacingOption;
+  gap?: gapOption;
   direction?: "horizontal" | "vertical";
   wrap?: "wrap" | "nowrap" | "reverse";
 };
 
 const boxClasses = cva("flex", {
   variants: {
-    spacing: {
-      none: "gap-0",
-      small: "gap-2",
-      medium: "gap-4",
-      large: "gap-8",
+    gap: {
+      0: "gap-0",
+      1: "gap-1",
+      2: "gap-2",
+      3: "gap-3",
+      4: "gap-4",
+      5: "gap-5",
+      6: "gap-6",
+      8: "gap-8",
+      10: "gap-10",
+      12: "gap-12",
+      16: "gap-16",
+      20: "gap-20",
+      24: "gap-24",
+      32: "gap-32",
+      40: "gap-40",
+      48: "gap-48",
+      56: "gap-56",
+      64: "gap-64",
     },
     direction: {
       horizontal: "flex-row",
@@ -86,7 +78,7 @@ const boxClasses = cva("flex", {
     },
   },
   defaultVariants: {
-    spacing: "none",
+    gap: 0,
     direction: "vertical",
     wrap: "wrap",
   },
@@ -94,7 +86,7 @@ const boxClasses = cva("flex", {
 
 export const Box = ({
   children,
-  spacing = "small",
+  gap = 0,
   direction = "vertical",
   wrap = "wrap",
   justifyContent,
@@ -114,7 +106,7 @@ export const Box = ({
       className={mergeClasses(
         baseContainerClasses({ bgColor, margin, padding, border, radius }),
         boxClasses({
-          spacing,
+          gap,
           direction,
           wrap,
           justifyContent: justifyContent || "start",
